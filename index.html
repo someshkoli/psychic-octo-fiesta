@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="query">
+    <button type="button" onclick="call_shivika()">query</button>
+    <div id="recommendation"></div>
+    <script>
+        function call_shivika() {
+            q = document.getElementById("query").value;
+            axios.get(`http://127.0.0.1:8888/recomm?x=${q}`)
+                .then((res) => {
+                    document.getElementById("recommendation").innerHTML = res.data;
+                    console.log(res)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        }
+    </script>
+</body>
+
+</html>
